@@ -1,13 +1,389 @@
-/* Стили страницы.
-   Пишите здесь. */
-
+/* Базовые стили */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  min-height: 100vh;
-  font-family: sans-serif;
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: #F5EFE8;
+    color: #2B211B;
+    line-height: 1.5;
+    min-height: 100vh;
+}
+
+/* Обёртка страницы */
+.page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 28px 60px;
+    background-color: #F5EFE8;
+    border-bottom: 1px solid #E3D9CE;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #6B4F3A;
+}
+
+.logo-subtitle {
+    font-size: 10px;
+    color: #8A7A6D;
+    letter-spacing: 1px;
+    margin-top: 2px;
+}
+
+.booking-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #8A7A6D;
+}
+
+.booking-info svg {
+    color: #C89B6C;
+}
+
+/* Основной контент */
+.main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 60px 60px;
+    width: 100%;
+    flex: 1;
+}
+
+/* Индикатор шага */
+.step-indicator {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.step-number {
+    width: 32px;
+    height: 32px;
+    background-color: #6B4F3A;
+    color: #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.step-line {
+    width: 40px;
+    height: 1px;
+    background-color: #C89B6C;
+}
+
+.step-text {
+    font-size: 12px;
+    color: #8A7A6D;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+/* Заголовок */
+.page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #2B211B;
+    margin-bottom: 10px;
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: #8A7A6D;
+    margin-bottom: 40px;
+}
+
+/* Секция календаря */
+.calendar-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Карточка календаря */
+.calendar-card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(43, 33, 27, 0.06);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.calendar-nav {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background-color: #F5EFE8;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6B4F3A;
+    transition: all 0.2s;
+}
+
+.calendar-nav:hover {
+    background-color: #C89B6C;
+    color: #FFFFFF;
+}
+
+.calendar-month {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #2B211B;
+}
+
+/* Сетка календаря */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.weekday {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: #8A7A6D;
+    padding: 8px 0;
+    letter-spacing: 0.5px;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2B211B;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: transparent;
+    border: none;
+}
+
+.day:hover:not(.day-empty) {
+    background-color: #F5EFE8;
+}
+
+.day-empty {
+    cursor: default;
+}
+
+.day-empty:hover {
+    background-color: transparent;
+}
+
+/* Подсказка под календарём */
+.calendar-hint {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 18px;
+    background-color: #F5EFE8;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #8A7A6D;
+}
+
+.calendar-hint svg {
+    color: #C89B6C;
+    flex-shrink: 0;
+}
+
+/* Карточка времени */
+.time-card {
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(43, 33, 27, 0.06);
+}
+
+.time-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #2B211B;
+    margin-bottom: 8px;
+}
+
+.time-subtitle {
+    font-size: 14px;
+    color: #8A7A6D;
+    margin-bottom: 24px;
+}
+
+/* Слоты времени — 4 колонки */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.time-slot {
+    height: 52px;
+    padding: 0 8px;
+    background-color: #FFFFFF;
+    border: 1px solid #E3D9CE;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: #2B211B;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.time-slot:hover:not(.time-slot-booked) {
+    border-color: #C89B6C;
+    background-color: #F5EFE8;
+}
+
+.time-slot-selected {
+    background-color: #C89B6C;
+    border-color: #C89B6C;
+    color: #FFFFFF;
+}
+
+.time-slot-selected:hover {
+    background-color: #B88B5C;
+    border-color: #B88B5C;
+}
+
+.time-slot-booked {
+    background-color: #E3D9CE;
+    border-color: #E3D9CE;
+    color: #8A7A6D;
+    cursor: not-allowed;
+    font-size: 12px;
+}
+
+.time-slot-booked:hover {
+    background-color: #E3D9CE;
+    border-color: #E3D9CE;
+}
+
+/* Легенда */
+.time-legend {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #E3D9CE;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #8A7A6D;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.legend-free {
+    background-color: #FFFFFF;
+    border: 1px solid #E3D9CE;
+}
+
+.legend-booked {
+    background-color: #E3D9CE;
+}
+
+.legend-selected {
+    background-color: #C89B6C;
+}
+
+/* Разделитель */
+.divider {
+    height: 1px;
+    background-color: #E3D9CE;
+    margin: 40px 0 30px;
+}
+
+/* Навигация */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn {
+    padding: 14px 36px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: none;
+    font-family: inherit;
+}
+
+.btn-back {
+    background-color: #FFFFFF;
+    border: 1px solid #E3D9CE;
+    color: #2B211B;
+}
+
+.btn-back:hover {
+    background-color: #F5EFE8;
+    border-color: #C89B6C;
+}
+
+.btn-next {
+    background-color: #C89B6C;
+    color: #FFFFFF;
+}
+
+.btn-next:hover {
+    background-color: #B88B5C;
 }
