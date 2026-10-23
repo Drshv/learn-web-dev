@@ -186,6 +186,7 @@ body {
     letter-spacing: 0.5px;
 }
 
+/* Дни календаря (теперь это кнопки) */
 .day {
     aspect-ratio: 1;
     display: flex;
@@ -199,9 +200,10 @@ body {
     transition: all 0.2s;
     background-color: transparent;
     border: none;
+    font-family: inherit;
 }
 
-.day:hover:not(.day-empty) {
+.day:hover:not(.day-empty):not(.day-selected) {
     background-color: #F5EFE8;
 }
 
@@ -211,6 +213,16 @@ body {
 
 .day-empty:hover {
     background-color: transparent;
+}
+
+/* Состояние выбранной даты */
+.day-selected {
+    background-color: #C89B6C;
+    color: #FFFFFF;
+}
+
+.day-selected:hover {
+    background-color: #B88B5C;
 }
 
 /* Подсказка под календарём */
@@ -252,7 +264,7 @@ body {
     margin-bottom: 24px;
 }
 
-/* Слоты времени — 4 колонки */
+/* Слоты времени */
 .time-slots {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -386,4 +398,50 @@ body {
 
 .btn-next:hover {
     background-color: #B88B5C;
+}
+
+/* =========================================
+   АДАПТИВНАЯ ВЁРСТКА (Медиазапросы)
+   ========================================= */
+@media (max-width: 768px) {
+    .header {
+        padding: 20px 24px;
+    }
+
+    .logo-title {
+        font-size: 18px;
+    }
+
+    .main {
+        padding: 30px 24px 40px;
+    }
+
+    .page-title {
+        font-size: 28px;
+    }
+
+    /* Карточки встают друг под друга */
+    .calendar-section {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    /* На мобильном слоты времени в 2 колонки, а не в 4 */
+    .time-slots {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .calendar-card, .time-card {
+        padding: 24px;
+    }
+
+    .navigation {
+        flex-direction: column-reverse;
+        gap: 12px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
 }
